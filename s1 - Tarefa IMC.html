@@ -4,52 +4,23 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Calculadora de IMC</title>
+	<link rel="stylesheet" type="text/css" href="s1 - Tarefa IMC - stylesheet.css"  />
+	<script type="text/JavaScript" src="s1 - Tarefa IMC - javascript.js" async></script>
 </head>
-<body style="align-content: center; background-color: rgb(200, 255, 205);">
-	<div style="margin-top: 10%; margin-left: auto; margin-right: auto; background-color: ghostwhite; border-radius: 20px; padding: 30px 30px 50px 30px; text-align: center; max-width: 500px;">
+<body style="">
+	<div id="divPrincipal" style="">
 		<h1>Calculadora de IMC</h1>
 		<p>Digite os dados abaixo e confira sua classificação IMC.</p>
-		<p style="color: lightgray; font-size: x-small; font-style: italic;">Atenção, o resultado diz pouco sobre sua saúde e é quase irrelevante.<p>
+		<p style="color: lightgray; font-size: 1.3vh; font-style: italic;">Atenção, o resultado diz pouco sobre sua saúde e é quase irrelevante.<p>
 		<br>
 		<div style="padding-left: 30px;">
-			<p style="display: inline;">Altura: </p><input id="altura" type="text" placeholder="Sua altura em metros, ex: '1.65'" autocomplete="off" maxlength="4" style="display: inline; width: 200px;">
+			<p style="display: inline;">Altura: </p><input id="altura" type="text" placeholder="Sua altura em metros, ex: '1.65'" autocomplete="off" maxlength="4" style="">
 			<br><br>
-			<p style="display: inline;">Peso: </p><input id="peso" type="text" placeholder="Seu peso em kg, ex: '60.20'" autocomplete="off" maxlength="5" style="display: inline; width: 200px;">
+			<p style="display: inline;">Peso: </p><input id="peso" type="text" placeholder="Seu peso em kg, ex: '60.20'" autocomplete="off" maxlength="5" style="">
 			<br><br>
-			<div style="text-align: center;"><button id="enviar" style="margin: 20px 15px; padding: 16px 32px; font-size: large;">Calcular</button></div>
+			<button id="enviar" style="">Conferir</button>
 		</div>
 	</div>
 	
 </body>
-<script type="text/javascript">
-	
-	let botaoEnviar = document.getElementById('enviar');
-
-	botaoEnviar.addEventListener('click', () => {
-		let altura = document.getElementById('altura').value;
-		let peso = document.getElementById('peso').value;
-		if (!altura || !peso) {
-			alert('Digite altura e peso corretamente');
-		} else {
-			let imc = peso / altura ** 2;
-			//imc = imc.toFixed(2);
-			imc = Math.round(imc*1e2) / 1e2;
-			console.log(imc);
-
-			if (imc < 18.5) {
-				alert(`Seu imc (${imc}) está abaixo do ideal.`);
-			} else if (imc >= 18.5 && imc < 25.0) {
-				alert(`Seu imc (${imc}) está no ideal.`);
-			} else if (imc >= 25.0 && imc < 30.0) {
-				alert(`Seu imc (${imc}) está um pouco acima do ideal.`);
-			} else if (imc >= 30.0) {
-				alert(`Seu imc (${imc}) está acima do ideal.`);
-			} else {
-				alert('Não foi possível calcular, revise os números indicados.');
-			}
-		}
-	});
-
-
-</script>
 </html>
