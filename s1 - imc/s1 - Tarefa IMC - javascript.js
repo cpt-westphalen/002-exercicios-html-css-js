@@ -1,10 +1,12 @@
 let botaoEnviar = document.getElementById('enviar');
 
-botaoEnviar.addEventListener('click', () => {
+function calcularIMC() {
 	let altura = document.getElementById('altura').value;
 	let peso = document.getElementById('peso').value;
+	altura = Number(altura.replace(',', '.'));
+	peso = Number(peso.replace(',', '.'));
 	if (!altura || !peso) {
-		alert('Digite altura e peso corretamente');
+		alert('Digite altura e peso corretamente.');
 	} else {
 		let imc = peso / altura ** 2;
 		//imc = imc.toFixed(2);
@@ -23,5 +25,11 @@ botaoEnviar.addEventListener('click', () => {
 			alert('Não foi possível calcular, revise os números indicados.');
 		}
 	}
-});
+}
 
+window.addEventListener('load', () => {
+	botaoEnviar.addEventListener('click', calcularIMC);
+	peso.addEventListener('keyup', (keyClicked) => {
+		if (keyClicked.key === 'Enter') { calcularIMC(); }
+	});
+});
