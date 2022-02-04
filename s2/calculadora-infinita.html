@@ -1,0 +1,41 @@
+<script>
+
+let n1, n2, operador, sair = false;
+
+alert('Bem-vindo à calculadora.');
+
+n1 = prompt('Digite um número ou "s" para sair');
+
+if (n1 == 's') { sair = true; } else { n1 = parseFloat(n1); }
+
+while (Number.isNaN(n1) == true && sair == false) { 
+	n1 = prompt('Digite um número válido ou "s" para sair'); 
+	if (n1 == 's') { sair = true; } else { n1 = parseFloat(n1); }
+}
+
+while (sair == false) {
+	operador = prompt('Digite um operador');
+	let testOperador = /[\+\-\*\/]/.test(operador);
+	while (testOperador == false || (operador.length != 1 && operador !== '**')) { 
+		operador = prompt('Digite um único operador válido: +, -, *, /, **.'); 
+		testOperador = /[\+\-\*\/]/.test(operador);
+	}
+	n2 = prompt("Digite um segundo número (ou 's' para sair)");
+	if (n2 == 's') { break; } else { n2 = parseFloat(n2); }
+	while (Number.isNaN(n2) == true && sair == false) { 
+		n2 = prompt('Digite um número válido (ou "s" para sair)');
+		if ( n2 == 's') { sair = true; break; } 
+	}
+		
+	if (operador == '+') { n1 = n1 + n2; }
+	else if (operador == '-') { n1 = n1 - n2; }
+	else if (operador == '/') { n1 = n1 / n2; }
+	else if (operador == '*') { n1 = n1 * n2; }
+	else if (operador == '**') { n1 = n1 ** n2; }
+	else { console.log(n1); alert('Aconteceu um erro.'); break;}
+	alert(`O resultado parcial é: ${n1}`);
+}
+
+if (!Number.isNaN(parseFloat(n1))) { alert(`O resultado final é: ${n1}`); }
+
+</script>
