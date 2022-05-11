@@ -3,27 +3,71 @@ body {
 	height: 100vh;
 	background-image: linear-gradient(60deg, mediumseagreen, dodgerblue);
 	max-height: 1080px;
+	overflow: hidden;
+	font-family: inter, sans, sans-serif;
 }
 
 #divPrincipal {
-	margin-top: 10%; 
-	margin-left: auto; 
-	margin-right: auto; 
+	display: flex;
+	flex-direction: column;
+	margin: 100px auto 30px auto;
 	background-color: ghostwhite; 
 	border-radius: 20px 100px; 
 	padding: 30px 30px 50px 24px; 
 	text-align: center; 
 	max-width: 500px;
-	font-family: inter, sans, sans-serif;
 }
 
 #enviar {
-	margin: 24px 16px; 
-	padding: 16px 32px; 
-	font-size: large;
+	margin: 24px 16px 24px 16px; 
+	padding: 12px 24px; 
+	font-size: 16px;
+	border-color: lightseagreen;
+	border-radius: 24px;
+	color: gray;
+	background-color: ghostwhite;
+	transition: 0.15s;
+}
+
+#enviar:hover {
+	color: rgba(82, 228, 220, 0.8);
+	border-color: rgb(62, 208, 200);
+	transition: 0.25s;
+	cursor: pointer;
+
 }
 
 input {
 	display: inline; 
 	width: 200px;
+}
+
+.inputs {
+	display: block;
+	margin: 16px 0;
+}
+
+
+#result {
+	display: flex;
+	flex-direction: column;
+	margin: 50px auto;
+	background-color: ghostwhite;
+	border-radius: 20px;
+	padding: 16px 32px 32px 32px;
+	width: 350px;
+	height: 200px;
+}
+
+
+@media screen and (max-width: 992px) {
+	#divPrincipal {
+		margin-top: 10%;
+	}	
+}
+
+@media screen and (max-width: 500px) {
+	#divPrincipal {
+		max-width: 96vw;
+	}	
 }

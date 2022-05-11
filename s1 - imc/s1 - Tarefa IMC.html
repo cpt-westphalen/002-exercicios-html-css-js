@@ -7,19 +7,29 @@
 	<link rel="stylesheet" type="text/css" href="s1 - Tarefa IMC - stylesheet.css"  />
 	<script type="text/JavaScript" src="s1 - Tarefa IMC - javascript.js" async></script>
 </head>
-<body style="">
-	<div id="divPrincipal" style="">
+<body>
+	<div id="divPrincipal">
 		<h1>Calculadora de IMC</h1>
 		<p>Digite os dados abaixo e confira sua classificação IMC.</p>
-		<p style="color: lightgray; font-size: 1.3vh; font-style: italic;">Atenção, o resultado diz pouco sobre sua saúde e é quase irrelevante.<p>
-		<br>
-		<div style="padding-left: 30px;">
-			<p style="display: inline;">Altura: </p><input id="altura" type="text" placeholder="Sua altura em metros, ex: '1.65'" autocomplete="off" maxlength="4" style="">
-			<br><br>
-			<p style="display: inline;">Peso: </p><input id="peso" type="text" placeholder="Seu peso em kg, ex: '60.20'" autocomplete="off" maxlength="5" style="">
-			<br><br>
-			<button id="enviar" style="">Conferir</button>
+		<p style="color: lightgray; font-size: 12px;"><em>Atenção, o resultado diz pouco sobre sua saúde e é quase irrelevante.</em><p>
+		<div>
+			<span style="margin: 18px auto;">
+				<span class="inputs">
+					<label for="altura" style="width: 24px;">Altura: </label><input id="altura" type="text" placeholder="Sua altura em metros, ex: '1.65'" autocomplete="off" maxlength="4">
+				</span>
+				<span class="inputs">
+					<label for="altura" style="width: 24px;">Peso: </label><input id="peso" type="text" placeholder="Seu peso em kg, ex: '60.20'" autocomplete="off" maxlength="5">
+				</span>
+			</span>
+			<button id="enviar">Calcular</button>
 		</div>
+	</div>
+	<div id="result">
+		<h3>Seu resultado</h4>
+			<p class="result-desc">O seu IMC atual é:</p>
+			<p id="imc-display" class="result-display"></p>
+			<p class="result-desc">Sua classificação é:</p>
+			<p id="classificacao-display" class="result-display" tool=""></p>
 	</div>
 	
 </body>
