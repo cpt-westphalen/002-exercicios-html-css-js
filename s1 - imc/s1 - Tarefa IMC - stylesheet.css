@@ -4,7 +4,12 @@ body {
 	background-image: linear-gradient(60deg, mediumseagreen, dodgerblue);
 	max-height: 1080px;
 	overflow: hidden;
-	font-family: inter, sans, sans-serif;
+	font-family: Inter, sans-serif;
+}
+
+h3 {
+	font-size: 28px;
+	margin: 12px 0 12px 0;
 }
 
 #divPrincipal {
@@ -18,22 +23,28 @@ body {
 	max-width: 500px;
 }
 
+#input-div {
+	padding-left: 8px;
+}
+
 #enviar {
 	margin: 24px 16px 24px 16px; 
 	padding: 12px 24px; 
 	font-size: 16px;
 	border-color: lightseagreen;
 	border-radius: 24px;
-	color: gray;
+	color: lightgray;
 	background-color: ghostwhite;
 	transition: 0.15s;
 }
 
 #enviar:hover {
-	color: rgba(82, 228, 220, 0.8);
+	color: rgb(82, 228, 220);
 	border-color: rgb(62, 208, 200);
-	transition: 0.25s;
+	transition: 0.35s;
 	cursor: pointer;
+	/*text-shadow: 1px 1px 2px lightgray;*/
+	box-shadow: 0 1px 5px -2px rgb(82, 228, 220);
 
 }
 
@@ -44,19 +55,38 @@ input {
 
 .inputs {
 	display: block;
-	margin: 16px 0;
+	margin: 16px 0 16px 48%;
+	text-align: right;
+	width: 265px;
+	transform: translateX(-50%);
+
+
 }
 
 
 #result {
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
 	margin: 50px auto;
 	background-color: ghostwhite;
 	border-radius: 20px;
-	padding: 16px 32px 32px 32px;
-	width: 350px;
+	padding: 22px 28px 32px 28px;
+	width: 380px;
 	height: 200px;
+}
+
+.result-desc {
+	margin-top: 12px;
+	margin-bottom: 6px;
+}
+
+.result-display {
+	text-transform: uppercase;
+	font-size: 24px;
+	color: rgb(62,208,200);
+	margin: 0 0 0 8px;
+	font-weight: 600;
 }
 
 

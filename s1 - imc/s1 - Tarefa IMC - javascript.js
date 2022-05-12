@@ -1,35 +1,49 @@
-let botaoEnviar = document.getElementById('enviar');
+const botaoEnviar = document.getElementById('enviar');
+const ImcDisplay = document.getElementById('imc-display');
+const clasDisplay = document.getElementById('classificacao-display');
 
-function calcularIMC() {
-	let altura = document.getElementById('altura').value;
-	let peso = document.getElementById('peso').value;
+
+const getInputs = () => {
+	const altura = document.getElementById('altura').value;
+	const peso = document.getElementById('peso').value;
+	try { 
+		resultDisplay(calcularIMC(altura,peso));
+	} catch(e) {
+		alert("Revise os números digitados.");
+	}
+}
+
+const calcularIMC = (altura, peso) => {
 	altura = Number(altura.replace(',', '.'));
 	peso = Number(peso.replace(',', '.'));
 	if (!altura || !peso) {
-		alert('Digite altura e peso corretamente.');
+		throw new Error('Dados inválidos para o cálculo');
 	} else {
 		let imc = peso / altura ** 2;
-		//imc = imc.toFixed(2);
 		imc = Math.round(imc*1e2) / 1e2;
-		console.log(imc);
+		return imc;
+	}
+}
 
-		if (imc < 18.5) {
-			alert(`Seu imc (${imc}) está abaixo do ideal.`);
-		} else if (imc >= 18.5 && imc < 25.0) {
-			alert(`Seu imc (${imc}) está no ideal.`);
-		} else if (imc >= 25.0 && imc < 30.0) {
-			alert(`Seu imc (${imc}) está um pouco acima do ideal.`);
-		} else if (imc >= 30.0) {
-			alert(`Seu imc (${imc}) está acima do ideal.`);
-		} else {
-			alert('Não foi possível calcular, revise os números indicados.');
-		}
+const resultDisplay = (imc) => {
+	if (typeof imc == 'number' && !Number.isNaN(imc))
+		ImcDisplay.textContent = imc;
+	else throw new Error("IMC inválido");
+
+	if (imc < 18.5) {
+		alert(`Seu imc (${imc}) está abaixo do ideal.`);
+	} else if (imc >= 18.5 && imc < 25.0) {
+		alert(`Seu imc (${imc}) está no ideal.`);
+	} else if (imc >= 25.0 && imc < 30.0) {
+		alert(`Seu imc (${imc}) está um pouco acima do ideal.`);
+	} else if (imc >= 30.0) {
+		alert(`Seu imc (${imc}) está acima do ideal.`);
 	}
 }
 
 window.addEventListener('load', () => {
-	botaoEnviar.addEventListener('click', calcularIMC);
+	botaoEnviar.addEventListener('click', getInputs);
 	peso.addEventListener('keyup', (keyClicked) => {
-		if (keyClicked.key === 'Enter') { calcularIMC(); }
+		if (keyClicked.key === 'Enter') { getInputs(); }
 	});
 });

@@ -12,7 +12,7 @@
 		<h1>Calculadora de IMC</h1>
 		<p>Digite os dados abaixo e confira sua classificação IMC.</p>
 		<p style="color: lightgray; font-size: 12px;"><em>Atenção, o resultado diz pouco sobre sua saúde e é quase irrelevante.</em><p>
-		<div>
+		<div id="input-div">
 			<span style="margin: 18px auto;">
 				<span class="inputs">
 					<label for="altura" style="width: 24px;">Altura: </label><input id="altura" type="text" placeholder="Sua altura em metros, ex: '1.65'" autocomplete="off" maxlength="4">
@@ -25,11 +25,11 @@
 		</div>
 	</div>
 	<div id="result">
-		<h3>Seu resultado</h4>
-			<p class="result-desc">O seu IMC atual é:</p>
-			<p id="imc-display" class="result-display"></p>
-			<p class="result-desc">Sua classificação é:</p>
-			<p id="classificacao-display" class="result-display" tool=""></p>
+		<h3>Seu resultado</h3>
+		<p class="result-desc">O seu IMC atual é:</p>
+		<p id="imc-display" class="result-display"></p>
+		<p class="result-desc">Sua classificação é:</p>
+		<p id="classificacao-display" class="result-display" tool=""></p>
 	</div>
 	
 </body>
