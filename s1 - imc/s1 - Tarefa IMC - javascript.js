@@ -1,11 +1,16 @@
 const botaoEnviar = document.getElementById('enviar');
+const resultClass = document.getElementsByClassName('result-display');
 const ImcDisplay = document.getElementById('imc-display');
 const clasDisplay = document.getElementById('classificacao-display');
-
+const resultDiv = document.getElementById('result');
+const alturaInput = document.getElementById('altura');
+const pesoInput = document.getElementById('peso')
 
 const getInputs = () => {
-	const altura = document.getElementById('altura').value;
-	const peso = document.getElementById('peso').value;
+	resultClass[0].style.opacity = "0";
+	resultClass[1].style.opacity = "0";
+	const altura = alturaInput.value;
+	const peso = pesoInput.value;
 	try { 
 		resultDisplay(calcularIMC(altura,peso));
 	} catch(e) {
@@ -26,24 +31,63 @@ const calcularIMC = (altura, peso) => {
 }
 
 const resultDisplay = (imc) => {
-	if (typeof imc == 'number' && !Number.isNaN(imc))
-		ImcDisplay.textContent = imc;
-	else throw new Error("IMC inválido");
-
-	if (imc < 18.5) {
-		alert(`Seu imc (${imc}) está abaixo do ideal.`);
-	} else if (imc >= 18.5 && imc < 25.0) {
-		alert(`Seu imc (${imc}) está no ideal.`);
-	} else if (imc >= 25.0 && imc < 30.0) {
-		alert(`Seu imc (${imc}) está um pouco acima do ideal.`);
-	} else if (imc >= 30.0) {
-		alert(`Seu imc (${imc}) está acima do ideal.`);
-	}
+	
+	setTimeout(
+		()=>{
+			if (typeof imc == 'number' && !Number.isNaN(imc)) {
+				ImcDisplay.textContent = imc;
+				if (imc < 18.5) {
+					clasDisplay.textContent = "ABAIXO DO IDEAL";
+				} else if (imc >= 18.5 && imc < 25.0) {
+					clasDisplay.textContent = "IDEAL";
+				} else if (imc >= 25.0 && imc < 30.0) {
+					clasDisplay.textContent = "ACIMA DO IDEAL";
+				} else if (imc >= 30.0) {
+					clasDisplay.textContent = "OBESIDADE";
+				}
+				
+				if (resultDiv.style.display == "") {
+					resultDiv.style.display = "flex";
+					setTimeout(() => {
+							resultDiv.style["animation-play-state"] = "running";
+							resultDiv.style.opacity = "1";
+						}, 1);
+				}
+				setTimeout(()=>{
+						resultClass[0].style.opacity = "1";
+						resultClass[1].style.opacity = "1";
+					}, 1);
+			} else {
+				throw new Error("IMC inválido");
+			}
+		}, 300);
 }
 
 window.addEventListener('load', () => {
+	
 	botaoEnviar.addEventListener('click', getInputs);
-	peso.addEventListener('keyup', (keyClicked) => {
-		if (keyClicked.key === 'Enter') { getInputs(); }
-	});
+	
+	pesoInput.addEventListener('keypress', 
+		(keyClicked) => {
+			if (keyClicked.key === 'Enter') 
+				getInputs();
+		});
+
+	alturaInput.addEventListener('input', 
+		() => {
+			if(pesoInput.value.length > 1 && alturaInput.value.length >= 1) {
+				botaoEnviar.style["color"] = "rgb(82, 228, 220)";
+			} else {
+				botaoEnviar.style["color"] = "lightgray";
+			}
+		});
+	
+	pesoInput.addEventListener('input', 
+		() => {
+			if(pesoInput.value.length > 1 && alturaInput.value.length >= 1) {
+				botaoEnviar.style["color"] = "rgb(82, 228, 220)";
+			} else {
+				botaoEnviar.style["color"] = "lightgray";
+			}
+		});
 });
